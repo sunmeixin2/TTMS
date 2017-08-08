@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'style/'?>style.css">
+	<script type="text/javascript" src="<?php echo base_url() . 'js/'?>index.js"></script>
+</head>
+<body>
+	<header>
+     <h1>
+        剧院管理系统
+      <b class="login">当前用户<span>张三</span></b>
+      <b style="cursor: pointer;">登录</b>
+     </h1>
+	</header>
+	<section>
+	<nav>
+		<ul class="aside">
+		  <li class="active"><a href="<?php echo site_url('admin/home/index') ?>">影厅管理</a></li>
+	      <li><a href="<?php echo site_url('admin/play/index') ?>">剧目管理</a></li>
+	      <li ><a href="<?php echo site_url('admin/show_plan/index') ?>">演出计划管理</a></li>
+	      <li ><a href="<?php echo site_url('admin/ticket/index') ?>">票务管理</a></li>
+	      <li ><a href="<?php echo site_url('admin/user/index') ?>">用户管理</a></li>
+		</ul>
+	<form action="<?php echo site_url('admin/home/edit_YT') ?>" method="POST">
+	<tr><td><h2>编辑影厅信息</h2></td></tr>
+	<tr>
+		<td>影厅名称</td>
+		<td><input type="text" name="h_name" value="<?php echo $check [0]['h_name'] ?>" /></td></p>
+		<td>座位的总行数</td>
+		<td><input type="text" name="rows" value="<?php echo $check [0]['rows'] ?>" /></td></p>
+		<td>座位的总列数</td>
+		<td><input type="text" name="cols" value="<?php echo $check [0]['cols'] ?>" /></td></p>
+	</tr><pre></pre>
+		<input type="hidden" name="h_id" value="<?php echo $check[0]['h_id'] ?>" />
+    	<input type="submit" value="编辑"/>
+	</form>
+</body>
+</html>

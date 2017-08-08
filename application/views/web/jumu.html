@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('style/style.css')  ?>">
+</head>
+<body>
+  <header>
+     <h1>
+        剧院管理系统
+      <b class="login">当前用户<span>张三</span></b>
+      <b style="cursor: pointer;">登录</b>
+     </h1>
+  </header>
+  <section>
+  <nav>
+    <ul class="aside">
+      <li><a href="<?php echo site_url('admin/home/index')?>">影厅管理</a></li>
+      <li class="active"><a href="<?php  echo site_url('admin/play/index')?>">剧目管理</a></li>
+      <li><a href="<?php echo site_url('admin/show_plan/index')?>">演出计划管理</a></li>
+      <li><a href="<?php echo site_url('admin/ticket/index')?>">票务管理</a></li>
+      <li><a href="<?php echo site_url('admin/user/index')?>">用户管理</a></li>
+    </ul>
+    <article class="one" id="yingting">
+     <h1>剧目管理</h1>
+              <div class="table">
+              <input type="button" value="+ 添加剧目" onclick="add();" id="add"></input>
+               <script type="text/javascript">
+  
+                 function add(){
+                 
+            
+                      window.location.href="<?php echo site_url('admin/play/play_add') ?>";
+              
+              
+               }
+               </script>
+                 <table>
+                   <thead>
+                   <th>剧目ID</th>
+                   <!-- <th>海报</th> -->
+                    <th>剧目名称</th>
+                    <th>剧目类型</th>
+                    <!-- <th>时长</th>
+                    <th>演员</th>
+                     <th>导演</th> -->
+                    <th>上映日期</th>
+                   <!--  <th>豆瓣评分</th>
+                    <th>大概简介</th> -->
+                    <th>操作</th>
+                  </thead>
+                  <tbody>
+                  <!-- <?php var_dump($play_info) ?> -->
+                  <?php  foreach($play_info as $value):  $poster=$value['poster'] ?>
+                    <tr>
+                      <td><?php echo $value['p_id']?></td>
+                      <!--  <td><img src='<?php echo base_url("uploads/$poster") ?>' style="width: 70px; height: 70px"></td> -->
+                      <td><?php echo $value['p_name']?></td>
+                      <td><?php echo $value['p_type']?></td>
+                      <!-- <td><?php echo $value['time']?></td>
+                      <td><p><?php echo $value['actor']?></p></td>
+                       <td><?php echo $value['director']?></td> -->
+                      <td><?php echo $value['up_date']?></td>
+                      <!-- <td><?php echo $value['like']?></td>
+                      <td><p><?php echo $value['details']?></p></td> -->
+                     
+                      <td>
+                      <span><a href="">详情</a></span>
+                      <span><a href="<?php echo site_url('admin/play/play_delete/').$value['p_id']?>">删除</a></span>
+                      <span><a href="<?php echo site_url('admin/play/play_edit/').$value['p_id']?>">修改</a>
+                      </span>
+                      </td>
+                      </tr>
+                      <?php endforeach ?>
+                  </tbody>
+                 </table>
+               
+             </div>
+            <script type="text/javascript">
+                 function xiugai(){
+                 
+            
+                 window.location.href="<?php echo site_url() . '/admin/home/edit'?>";
+                 
+              
+               }
+            </script>
+            </div>
+    </article>
+  </nav>
+  </section>
+</div>
+</body>
+</html>

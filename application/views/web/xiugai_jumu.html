@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'style/'?>style.css">
+</head>
+<body>
+<header>
+     <h1>
+        剧院管理系统
+      <b class="login">当前用户<span>张三</span></b>
+      <b style="cursor: pointer;">登录</b>
+     </h1>
+  </header>
+  <section>
+  <nav>
+    <ul class="aside">
+      <li ><a href="<?php echo site_url('admin/home/index')?>">影厅管理</a></li>
+      <li class="active"><a href="<?php  echo site_url('admin/play/index')?>">剧目管理</a></li>
+      <li><a href="<?php echo site_url('admin/show_plan/index')?>">演出计划管理</a></li>
+      <li><a href="<?php echo site_url('admin/ticket/index')?>">票务管理</a></li>
+      <li><a href="<?php echo site_url('admin/user/index')?>">用户管理</a></li>
+    </ul>
+    <article class="one" id="yingting">
+     <h1>剧目管理</h1>
+            <div class="usually">
+          <form action="<?php echo site_url('admin/play/play_edit_action')?>" method="POST" enctype="multipart/form-data">
+          <div class="title">
+                 <p>修改</p>
+                  <span class="return" onclick="fanhui();">返回</span><script type="text/javascript">
+           function fanhui() {
+             window.history.go(-1);
+           }
+    </script>
+                </div>
+                <div class="form">
+                <label for="name">剧目名称</label><input type="text" name="p_name" class="addId" id="name" value="<?php echo $data[0]['p_name']?>"><br>
+                  <label for="type">剧目类型</label><select name="type"class="addId" id="type" ><br>
+                  <option  value="<?php echo $data[0]['p_type']?>"><?php echo $data[0]['p_type']?></option> 
+                   <option value="喜剧">喜剧</option>
+                   <option value="动作">动作</option>
+                    <option value="悬疑">悬疑</option>
+                    <option value="科幻">科幻</option>
+                    <option value="其他">其他</option>
+                  </select><br>
+                  <label for="time">时长</label><input type="text" name="time"class="addId" id="time" value="<?php echo $data[0]['time']?>"><br>
+                  <label for="actor">演员</label><input type="text" name="actor"class="addId" id="actor" value="<?php echo $data[0]['actor']?>"><br>
+                  <label for="direct">导演</label><input type="text" name="director"class="addId" id="direct" value="<?php echo $data[0]['director']?>"><br>
+                  <label for="date">上映日期</label><input type="text" name="up_date"class="addId" id="date" value="<?php echo $data[0]['up_date']?>"><br>
+                  <label for="grade">豆瓣评分</label><input type="text" name="like"class="addId" id="grade" value="<?php echo $data[0]['like']?>"><br>
+                  <label for="jiaoshao">剧情介绍</label><textarea name="details" class="addId jiaoshao" id="jiaoshao" value=""><?php echo $data[0]['details']?></textarea><br>
+                  <!-- <label for="name">海报</label><input type="file" name="play_file"class="addId" value="" multiple="multiple"> -->
+                  <input type="hidden" name="p_id" class="addId" value="<?php echo $data[0]['p_id']?>"><br>
+                  <input type="submit" value="保存" id="addsave">
+                  </div>
+                  </form>
+           </div>
+  </div>
+
+</body>
+</html>

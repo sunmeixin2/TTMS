@@ -1,0 +1,298 @@
+*{
+	padding: 0;
+	margin:0;
+}
+html,body{
+	width: 100%;
+  z-index: 1;
+  color: white;
+}
+header{
+	width: 100%;
+	height: 100px;
+	background: #2C3E50;
+	text-align: center;
+	line-height: 100px;
+	border-bottom: 1px solid #BFBFC1;
+}
+section{
+	background: #F5F5F5;
+	color: #555555;
+	width: 100%;
+	height: auto;
+	display: inline-block;
+}
+li{
+	list-style: none;
+}
+b{
+	font-size: 20px;
+	font-weight: normal;
+	float: right;
+	margin-right: 20px;
+}
+.login{
+	display: none;
+}
+a{
+	text-decoration: none;
+	color: #555555;
+
+	
+}
+nav{
+	height: auto;
+}
+nav ul.aside{
+	width: 10%;
+     height: 400px;
+     border-radius: 10px;
+     float: left;
+     box-sizing:border-box;
+     border: 1px solid #BFBFC1;
+   
+     overflow: hidden;
+     margin-top:  15px;
+     margin-left: 10px;
+     background: white;
+}
+  ul.aside li{
+    height: 50px;
+    border-bottom: 1px solid #BFBFC1;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+nav li.active{
+	background:#019875;
+	/*background: #83A685;*/
+	
+}
+nav li.active a{
+color: white;
+}
+nav article{
+	width: 85%;
+	height: auto;
+	float: left;
+	display: none;
+}
+nav article h1{
+	font-size: 25px;
+	margin: 10px ;
+	font-weight: normal;
+	margin-left: 20px;
+}
+
+.one{
+     display: block;
+     height: auto;
+     	/*background: #BFBFC1; */
+}
+
+ 
+
+ table{
+	border: 1px solid #BFBFC1;
+	margin: 20px;
+	width: 1100px;
+	text-align: center;
+	background: white;
+	border-collapse: collapse;
+	border-radius: 10px;
+
+}
+ tr{
+	
+	margin: 0px;
+	height: 50px;
+	text-align: center;
+	border:1px solid #BFBFC1; 
+}
+ tr:hover{
+   background: #F6F5FA;
+}
+ td span{
+	cursor: pointer;
+	margin: 10px;
+	font-size: 15px;
+	padding: 5px;
+	/*width: 40px;*/
+	border-radius: 5px; 
+	transition: all 0.2s;
+	background:  #FCF8E3;
+
+}
+td span:hover a{
+	color: white;
+}
+td span:hover{
+	background: orange;
+	/*border: 1px solid  #FAEBCC;*/
+	color: white;
+}
+.table{
+    padding: 10px;
+    background:white ;
+}
+ .usually{
+ 	border: 1px solid #BFBFC1 ;
+ 	margin: 20px;
+	width: 1100px;
+    background: white;
+ }
+
+ 
+#add{
+	margin: 10px;
+	margin-left: 18px;
+	width: 100px;
+	height: 40px;
+	background:  #FCF8E3;
+	border: 1px solid  #FAEBCC;
+	cursor: pointer;
+	color: #8A6D3B;
+	border-radius: 10px;
+}
+*{
+    	padding: 0;
+    	margin: 0;
+    }
+    html,body{
+    	width: 100%;
+    	height: 100%;
+    }
+    #box{
+    	 background:rgba(39,40,34,0.5);
+    	 width: 100%;
+    	 height: 100%;
+    	 position: fixed;
+    
+    }
+   
+#closed{
+	display: block;
+  float: right;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: -20px;
+}
+.addsave{
+
+    display: inline-block;
+	width: 60px;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 200px;
+	cursor: pointer;
+	border: 0;
+	background: #019875;
+	color: white;
+
+}
+.title{
+
+height: 40px;
+ background: #F5F5F5;
+ border-bottom: 1px solid #BFBFC1;
+ line-height: 40px;
+ padding: 5px;
+}
+.title p{
+  font-size: 18px;
+  width: 100px;
+  height: 40px;
+  margin-right: 0px;
+  float: left;
+
+}
+.title .return{
+	float: right;
+	margin-right: 10px;
+	cursor: pointer;
+	color: #019875;
+
+}
+
+.form{
+	margin: 10px;
+	margin-left: 150px;
+}
+label{
+	width: 65px;
+	display: inline-block;
+	margin: 10px 10px;
+	text-align: right;
+}
+.form input,.form select{
+	height: 25px;
+	border-radius: 5px;
+	padding: 2px;
+	/*border:1px solid #BFBFC1; */
+}
+.form select:focus{
+	outline: none;
+}
+.addId{
+	width: 200px;
+	margin-left: 20px;
+}
+input:focus{
+	outline: none;
+}
+.jiaoshao{
+	/*margin-top: 20px;*/
+	vertical-align: middle;
+	height: 100px;
+	resize: none;
+	border-radius:10px;
+	padding: 5px; 
+}
+.jiaoshao:focus{
+	outline: none;
+}
+
+/*  .search{
+	width: 100%;
+}
+ .desc{
+	float: right;
+}
+ .search span.color{
+	width: 20px;
+	height: 20px;
+	background: orange;
+	display: inline-block;
+	vertical-align:middle;
+	border: 2px dotted #BFBFC1;
+}
+  .search span.black{
+	width: 20px;
+	height: 20px;
+	background: black;
+	display: inline-block;
+	vertical-align:middle;
+}
+  .search .show{
+	border: 1px solid #BFBFC1;
+	width: 1000px;
+	text-align: center;
+	margin-left: 10px;
+}
+.showcolor{
+	margin: 20px;
+}*/}
+td p{
+	width: 150px;
+	height: 40px;
+	overflow: hidden;
+	margin: 0;
+    text-overflow: ellipsis;
+    white-space:nowrap; 
+    word-break: keep-all;  
+    word-wrap: normal;
+   line-height: 40px;
+}

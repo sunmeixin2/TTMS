@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('style/style.css') ?>">
+  <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js') ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('js/jquery.seat-charts.min.js') ?>"></script>
+   <style type="text/css">
+   .demo{width: 800px; margin: 20px auto 0 auto;  min-height: 500px;margin-bottom: 50px;}
+.front{width: 300px;margin: 5px 32px 45px 32px;background-color: #f0f0f0; color: #666;text-align: center;padding: 3px;border-radius: 5px;} 
+.booking-details {float: right;position: relative;width:200px;height: 450px; } 
+.booking-details h3 {margin: 5px 5px 0 0;font-size: 16px;} 
+.booking-details p{line-height:26px; font-size:16px; color:#999} 
+.booking-details p span{color:#666} 
+div.seatCharts-cell {color: #182C4E;height: 25px;width: 25px;line-height: 25px;margin: 3px;float: left;text-align: center;outline: none;font-size: 13px;} 
+div.seatCharts-seat {color: #fff;cursor: pointer;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius: 5px;} 
+div.seatCharts-row {height: 35px;} 
+div.seatCharts-seat.available {background-color: #B9DEA0;} 
+div.seatCharts-seat.focused {background-color: #76B474;border: none;} 
+div.seatCharts-seat.selected {background-color: #E6CAC4;} 
+div.seatCharts-seat.unavailable {background-color: #472B34;cursor: not-allowed;} 
+div.seatCharts-container {border: 1px dotted #adadad;width: 400px;padding: 20px;float: left;background: white;} 
+div.seatCharts-legend {padding-left: 0px;position: absolute;bottom: 16px;} 
+ul.seatCharts-legendList {padding-left: 0px;} 
+.seatCharts-legendItem{float:left; width:90px;margin-top: 10px;line-height: 2;} 
+span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;} 
+.checkout-button {display: block;width:80px; height:24px; line-height:20px;margin: 10px auto;border:1px solid #999;font-size: 14px; cursor:pointer} 
+#selected-seats {max-height: 150px;overflow-y: auto;overflow-x: none;width: 200px;} 
+#selected-seats li{float:left; width:72px; height:26px; line-height:26px; border:1px solid #d3d3d3; background:#f7f7f7; margin:6px; font-size:14px; font-weight:bold; text-align:center} 
+
+   </style>
+</head>
+<body>
+	<header>
+     <h1>
+        剧院管理系统
+      <b class="login">当前用户<span>张三</span></b>
+      <b style="cursor: pointer;">登录</b>
+     </h1>
+	</header>
+	<section>
+	<nav>
+		<ul class="aside">
+			<li ><a href="<?php echo site_url('admin/home/index')?>">影厅管理</a></li>
+			<li><a href="<?php  echo site_url('admin/play/index')?>">剧目管理</a></li>
+			<li><a href="<?php echo site_url('admin/show_plan/index')?>">演出计划管理</a></li>
+			<li class="active"><a href="<?php echo site_url('admin/ticket/index')?>">票务管理</a></li>
+			<li><a href="<?php echo site_url('admin/user/index')?>">用户管理</a></li>
+		</ul>
+		<article class="one" id="yingting">
+		 <!-- <h1>购票选座</h1> -->
+    <div class="title">
+      <span class="return" onclick="fanhui();">返回</span><script type="text/javascript">
+           function fanhui() {
+             window.history.go(-1);
+           }
+    </script>
+    </div>
+         <div class="demo"> 
+       <div id="seat-map"> 
+        <div class="front">屏幕</div>                     
+    </div> 
+    <div class="booking-details"> 
+
+        <p>影片：<span><?php echo $show_plan[0]['p_name']?></span></p> 
+        <p>时间：<span><?php echo $show_plan[0]['up_time']?></span></p> 
+        <p>票价:￥<?php echo $show_plan[0]['price']?>/张</p>
+        <p>座位：</p> 
+        <ul id="selected-seats"></ul> 
+        <p>票数：<span id="counter"><?php echo $show_plan[0]['ticket_num']?></span></p> 
+        <p>总计:￥<span id="total">0</span></p> 
+                 
+        <input type="submit" class="checkout-button" value=" 确定购买"> 
+                     
+        <!-- <div id="legend"></div>  -->
+    </div> 
+</div> 
+		</article>
+	</nav>
+	</section>
+</div>
+<script type="text/javascript">
+    var s_id=<?php echo $s_id ?>;
+    var price =<?php echo $show_plan[0]['price']?>; //票价 
+$(document).ready(function() { 
+    var $cart = $('#selected-seats'), //座位区 
+    $counter = $('#counter'), //票数 
+    $total = $('#total'); //总计金额 
+    
+    var sc = $('#seat-map').seatCharts({ 
+        map: [  //座位图 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa', 
+            'aaaaaaaaaa'
+            // 'aa__aa__aa' 
+        ], 
+        legend : { //定义图例 
+            node : $('#legend'), 
+            items : [ 
+                [ 'a', 'available',   '可选座' ], 
+                [ 'a', 'unavailable', '已售出'] 
+            ]                     
+        }, 
+        click: function () { //点击事件 
+            if (this.status() == 'available') { //可选座 
+                $('<li>'+(this.settings.row+1)+'排'+this.settings.label+'座</li>') 
+                    .attr('id', 'cart-item-'+this.settings.id) 
+                    .data('seatId', this.settings.id) 
+                    .appendTo($cart); 
+ 
+                $counter.text(sc.find('selected').length+1); 
+                $total.text(recalculateTotal(sc)+price); 
+        
+                 
+                return 'selected'; 
+            } else if (this.status() == 'selected') { //已选中 
+                //更新数量 
+                $counter.text(sc.find('selected').length-1); 
+                //更新总计 
+                $total.text(recalculateTotal(sc)-price); 
+                         
+                //删除已预订座位 
+                $('#cart-item-'+this.settings.id).remove(); 
+                //可选座 
+                return 'available'; 
+            } else if (this.status() == 'unavailable') { //已售出 
+                return 'unavailable'; 
+            } else { 
+                return this.style(); 
+            } 
+        } 
+    }); 
+    var A= [1,2,3,4];
+  
+     $.ajax({
+        type:"POST",
+        url:"<?php echo site_url('admin/ticket/buy')?>",
+        data:{s_id:s_id},
+        dataType:"json",
+        success : function(data){
+           
+            var data=data.tickets;
+           
+               $.each(data,function(i,item){
+
+                  if (data[i].is_sale==1) {
+                var div= $(".seatCharts-seat.seatCharts-cell")[this.nums-1];
+                  div.className="seatCharts-seat seatCharts-cell unavailable";
+               }
+
+               })
+
+        }
+
+    });
+  
+    //已售出的座位 
+    // console.log(A[0]+'_'+A[1]);
+    // sc.get(A[0]+'_'+A[1]).status('unavailable'); 
+
+}); 
+//计算总金额 
+function recalculateTotal(sc) { 
+    var total = 0; 
+    sc.find('selected').each(function () { 
+        total += price; 
+    }); 
+             
+    return total; 
+} 
+
+
+var button=$(".checkout-button");
+var str=new Array();
+button.on("click",function(){
+    var li=$("#selected-seats").find("li");
+    var str=[];
+    $.each(li,function(index,item){
+       
+      str.push(item.id.split("-")[2].replace("_"," "));
+
+    })
+    $.ajax({
+             type:'POST',
+             url : "<?php echo site_url('admin/ticket/tickets')?>",
+             data: {ticket:str,s_id:s_id},
+             success: function(data){
+                   if (data=='true') {
+                    alert("您已购票成功(●'◡'●)ﾉ♥");
+                    window.location.reload();
+                   }
+                   else{
+                    alert("万般无奈，您选中的座位已被其他用户抢购，请重新选购（┭┮﹏┭┮");
+                     window.location.reload();
+                   }
+             }
+        })
+     
+      
+})
+
+</script>
+
+</body>
+</html>

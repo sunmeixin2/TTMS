@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'style/'?>style.css">
+</head>
+<body>
+<header>
+     <h1>
+        剧院管理系统
+      <b class="login">当前用户<span>张三</span></b>
+      <b style="cursor: pointer;">登录</b>
+     </h1>
+  </header>
+  <section>
+  <nav>
+    <ul class="aside">
+       <li ><a href="<?php echo site_url('admin/home/index') ?>">影厅管理</a></li>
+      <li><a href="<?php echo site_url('admin/play/index') ?>">剧目管理</a></li>
+      <li ><a href="<?php echo site_url('admin/show_plan/index') ?>">演出计划管理</a></li>
+      <li class="active"><a href="<?php echo site_url('admin/ticket/index') ?>">票务管理</a></li>
+      <li ><a href="<?php echo site_url('admin/user/index') ?>">用户管理</a></li>
+    </ul>
+    <article class="one" id="yingting">
+     <h1>票务管理</h1>
+            <div class="usually">
+          <form action="<?php echo site_url('admin/home/edit_YT') ?>" method="POST">
+          <div class="title">
+                 <p>修改</p>
+                  <span class="return" onclick="fanhui();">返回</span><script type="text/javascript">
+           function fanhui() {
+             window.history.go(-1);
+           }
+    </script>
+                </div>
+                <div class="form">
+                 <input type="hidden" name="h_id" id="id" value="<?php echo $check[0]['h_id'] ?>" /><br>
+
+                  <label for="id">计划Id</label><input type="text"  id="id" class="addId"><br>
+                  <label for="place">所在影厅</label><input type="text" id="place" class="addId" name="name"><br>
+                  <label for="jumu">演出剧目</label><input type="text" id="jumu" class="addId"><br>
+                  <label for="kaishi_time">演出时间</label><br><input type="text" id="kaishi_time" class="addId"><br>
+                  
+                  <label for="cout">价格</label><input type="text" id="cout"class="addId"><br>
+                  <input type="submit" value="保存" class="addsave" ><br>
+                  </div>
+                  </form>
+           </div>
+  </div>
+
+</body>
+</html>

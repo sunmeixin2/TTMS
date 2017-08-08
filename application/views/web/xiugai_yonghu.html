@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'style/'?>style.css">
+</head>
+<body>
+<header>
+     <h1>
+        剧院管理系统
+      <b class="login">当前用户<span>张三</span></b>
+      <b style="cursor: pointer;">登录</b>
+     </h1>
+  </header>
+  <section>
+  <nav>
+    <ul class="aside">
+      <li ><a href="<?php echo site_url('admin/home/index') ?>">影厅管理</a></li>
+      <li><a href="<?php echo site_url('admin/play/index') ?>">剧目管理</a></li>
+      <li><a href="<?php echo site_url('admin/show_plan/index') ?>">演出计划管理</a></li>
+      <li ><a href="<?php echo site_url('admin/ticket/index') ?>">票务管理</a></li>
+      <li class="active"><a href="<?php echo site_url('admin/user/index') ?>">用户管理</a></li>
+    </ul>
+    <article class="one" id="yingting">
+     <h1>用户管理</h1>
+            <div class="usually">
+          <form action="<?php echo site_url('admin/user/edit_user_action') ?>" method="POST">
+          <div class="title">
+                 <p>修改</p>
+                  <span class="return" onclick="fanhui();">返回</span><script type="text/javascript">
+           function fanhui() {
+             window.history.go(-1);
+           }
+    </script>
+                </div>
+                <div class="form">
+                 <input type="hidden" name="uid" id="id" value="<?php echo $user[0]['uid'] ?>" /><br>
+
+                  <label for="id">用户Id</label><br><input type="text" name="account" id="id" class="addId" value="<?php echo $user[0]['account'] ?>"><br>
+                  <label for="name">用户名</label><br><input type="text" name="u_name" id="root" class="addId" value="<?php echo $user[0]['u_name']?>"><br>
+                  <label for="type">用户类型</label><br><select  class="addId" id="type" name="type" >
+                  <option  value="<?php echo $user[0]['type'] ?>" ><?php if($user[0]['type']==1) echo "超级管理员";  else echo "普通用户" ?> </option>
+                  <option  value="2">普通用户</option>
+                  <option  value="1">超级管理员</option>
+                   </select><br>
+                  <label for="root">用户等级</label><br><select  class="addId" id="type" name="rank" >
+                  <option  value="<?php echo $user[0]['rank'] ?>"><?php echo $user[0]['rank'] ?></option>
+                  <option  value="青铜">青铜</option>
+                  <option  value="白银">白银</option>
+                  <option  value="黄金">黄金</option>
+                  <option  value="钻石">钻石</option>
+                  <option  value="王者">王者</option>
+                  </select><br><br><br>
+                 
+                  <input type="submit" value="保存" class="addsave" ><br>
+                  </div>
+                  </form>
+           </div>
+  </div>
+
+</body>
+</html>
