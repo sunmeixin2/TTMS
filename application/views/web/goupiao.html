@@ -140,7 +140,7 @@ $(document).ready(function() {
         } 
     }); 
     var A= [1,2,3,4];
-  
+  reload();
      $.ajax({
         type:"POST",
         url:"<?php echo site_url('admin/ticket/buy')?>",
@@ -177,7 +177,11 @@ function recalculateTotal(sc) {
              
     return total; 
 } 
-
+function reload() {
+  var timer = setInterval(function() {
+    window.location.reload();
+  },20000)
+}
 
 var button=$(".checkout-button");
 var str=new Array();
@@ -187,14 +191,15 @@ button.on("click",function(){
     $.each(li,function(index,item){
        
       str.push(item.id.split("-")[2].replace("_"," "));
-
-    })
+  })
     $.ajax({
              type:'POST',
              url : "<?php echo site_url('admin/ticket/tickets')?>",
              data: {ticket:str,s_id:s_id},
              success: function(data){
-                   if (data=='true') {
+                   console.log(data);
+                   if (data == "true") {
+                    //console.log(1111);
                     alert("您已购票成功(●'◡'●)ﾉ♥");
                     window.location.reload();
                    }
@@ -206,8 +211,8 @@ button.on("click",function(){
         })
      
       
-})
 
+});
 </script>
 
 </body>

@@ -60,7 +60,8 @@
  			//对应已经售出的座位票信息
 		$this->db->select('nums,is_sale');
 		$data['tickets']=$this->db->get_where('ticket',array('is_sale'=>1,'s_id'=>$s_id))->result_array();
-		// var_dump($data);
+		 var_dump($data);
+		 exit(0);
 		 return $data;
  	}
 
@@ -72,7 +73,6 @@
  	public function ticket_action($data,$s_id) 
  	{ 
  		
-
  		$this->db->query("set autocommit=0");		//禁止事务自动提交
  		$this->db->query('start transaction');			//开启事务
  		$i=1;
@@ -87,7 +87,8 @@
 
 				$this->db->query('BEGIN');
 				$is_sale=$this->db->query("select *from ticket where s_id=$s_id and nums=$value FOR UPDATE")->result_array();
-
+				// var_dump($is_sale);
+				// exit(0);
 				// var_dump($is_sale);exit();
 				if($is_sale[0]['is_sale'] != 0){
 					$this->db->query('rollback');		//如果此票已售出  则事务回滚
