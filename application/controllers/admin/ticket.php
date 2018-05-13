@@ -13,7 +13,6 @@ class Ticket extends CI_Controller
 	*/
 
 	public function index(){
-
 		//获取演出计划表信息
 		$this->load->model('admin/ticket_model','ticket'); 
 		$info['ticket']=$this->ticket->select();
@@ -46,7 +45,7 @@ class Ticket extends CI_Controller
 		$info=$this->ticket->check($s_id);
 		$info['s_id']=$s_id;
 		$info['show_plan'][0]['up_time']=date("Y-m-d H:i",$info['show_plan'][0]['up_time']);
-		// var_dump($info);exit();
+		 //var_dump($info);exit();
 
 		// echo json_encode($info['tickets']);
 		
@@ -65,7 +64,7 @@ class Ticket extends CI_Controller
 		$this->load->model('admin/ticket_model','ticket'); 
 		$info=$this->ticket->check_ticket($s_id);
 
-		// var_dump($info);exit();
+		var_dump($info);exit();
 
 		echo json_encode($info);
 
@@ -88,18 +87,20 @@ class Ticket extends CI_Controller
 			$temp=explode(' ', $v);
 			$data[$i]=($temp[0]-1)*10+$temp[1];
 		}
-		// var_dump($data);
+		 //var_dump($data);
 
 		//载入用户选中的座位信息  为用户提交表单
 		$this->load->model('admin/ticket_model','ticket');
 		$status=$this->ticket->ticket_action($data,$s_id);
-		// var_dump($status);
-		// if($status==true){
-		// 	success('admin/ticket/index',"您已购票成功(●'◡'●)ﾉ♥");
-		// 	// success('admin/play/index','剧目添加成功~~^v^~');
-		// }else{
-		// 	error("万般无奈，您的购票失败啦（┭┮﹏┭┮）");
-		// }
+		//$data=1;
+		// $d[]=$data;
+	// 	var_dump($status);
+	// 	if($status==true){
+	// 		success('admin/ticket/index',"您已购票成功(●'◡'●)ﾉ♥");
+	// 		// success('admin/play/index','剧目添加成功~~^v^~');
+	// 	}else{
+	// 		error("万般无奈，您的购票失败啦（┭┮﹏┭┮）");
+	// 	}
 	// success('admin/play/index','剧目添加成功~~^v^~');
 		echo json_encode($status);
 

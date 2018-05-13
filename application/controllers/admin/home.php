@@ -10,7 +10,7 @@ class Home extends CI_Controller
 
 	/*查看影厅信息*/
 	public function index(){
-
+		
 		$this->load->model('admin/show_hall_model','show_hall');
 		$data['show_hall'] = $this->show_hall->check();
 
