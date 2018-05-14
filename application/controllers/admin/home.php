@@ -14,7 +14,7 @@ class Home extends CI_Controller
 		$this->load->model('admin/show_hall_model','show_hall');
 		$data['show_hall'] = $this->show_hall->check();
 
-		$this->load->view('web/index.html',$data);
+		$this->load->view('web/yingting.html',$data);
 	}
 
 	// 添加影厅

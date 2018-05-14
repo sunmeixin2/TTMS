@@ -26,7 +26,7 @@ class Ticket extends CI_Controller
 			$i++;
 
 		}
-		// var_dump($info);exit();
+		var_dump($info);exit();
 		$this->load->view('web/piaowu.html',$info);
 
 	}
@@ -47,7 +47,7 @@ class Ticket extends CI_Controller
 		$info['show_plan'][0]['up_time']=date("Y-m-d H:i",$info['show_plan'][0]['up_time']);
 		 //var_dump($info);exit();
 
-		// echo json_encode($info['tickets']);
+		 //echo json_encode($info['tickets']);
 		
 		$this->load->view('web/goupiao.html',$info);
 
@@ -64,7 +64,7 @@ class Ticket extends CI_Controller
 		$this->load->model('admin/ticket_model','ticket'); 
 		$info=$this->ticket->check_ticket($s_id);
 
-		var_dump($info);exit();
+		//var_dump($info);exit();
 
 		echo json_encode($info);
 

@@ -12,7 +12,7 @@ class Login extends CI_Controller
 	*/
 
 	public function index(){
-			
+
 		$this->load->view('web/login.html');
 	}
 
@@ -24,18 +24,27 @@ class Login extends CI_Controller
 	
 		$user_name=$this->input->post('user_name');
 		$pwd=$this->input->post('pwd');
-		// $captcha=$this->input->post('captcha');
-		echo '<p>'.$user_name.'</p>';
-		echo '<p>'.$pwd.'</p>';
-		 // echo '<p>'.$captcha.'</p>';
+
+		$this->load->model('admin/user_model','user');
+		$data=$this->user->login_check($user_name);
+	
+		if(!empty($data)){
+			if(md5($pwd)==$data['passwd']){
+				
+				$_SESSION['uid']=$data['uid'];
+				$_SESSION['type']=$data['type'];
+				$_SESSION['u_name']=$data['u_name'];
+				
+				$this->load->view('web/index.html');				
+			}else{
+				echo "密码错误";
+			}
+		}else{
+			echo "此用户不存在!";
+		}
+	
 	}
 
-	public function get_code(){
-  		$this->load->library('captcha');
-  		$code = $this->captcha->getCaptcha();
-  		$this->session->set_userdata('code', $code);
- 		$this->captcha->showImg();
- 	}
 
  	private function captcha(){
  		// $this->load->helper('captcha');		//验证码辅助函数
