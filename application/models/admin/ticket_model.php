@@ -48,10 +48,11 @@
 				->group_end()
 				->get()->result_array();
 
-		// //对应已经售出的座位票信息
-		// $this->db->select('nums,is_sale');
-		// $data['tickets']=$this->db->get_where('ticket',array('is_sale'=>1,'s_id'=>$s_id))->result_array();
-		// // var_dump($data);
+		//对应已经售出的座位票信息
+
+		$this->db->select('nums,is_sale');
+		$data['tickets']=$this->db->get_where('ticket',array('is_sale'=>1,'s_id'=>$id))->result_array();
+		 
 		 return $data;
  	}
  	public function check_ticket($s_id){
@@ -79,26 +80,16 @@
 
  		foreach ($data as $value) 			//循环查看用户需要购买的每张票是否已经售出
  		{
-			//判断用户所选中的票是否已经售出
-			// $is_sale=$this->db->select('is_sale')
-			// 	->get_where('ticket',array('s_id'=>$id,'nums'=>$value))
-			// 	->result_array();
-
+			
 
 				$this->db->query('BEGIN');
 				$is_sale=$this->db->query("select *from ticket where s_id=$s_id and nums=$value FOR UPDATE")->result_array();
-				// var_dump($is_sale);
-				// exit(0);
-				// var_dump($is_sale);exit();
+				
 				if($is_sale[0]['is_sale'] != 0){
 					$this->db->query('rollback');		//如果此票已售出  则事务回滚
 					return false;
 				}
-				// else{
-				// 	// $this->db->query('commit');		//此张票还为售出  可以继续购买
-				// 	$this->db->query('BEGIN');
-				// 	$this->db->query('select *from ticket where s_id='.$id.' and nums='.$value.' FOR UPDATE')
-				// }
+				
  		
  		}	
 

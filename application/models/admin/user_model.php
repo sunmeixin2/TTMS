@@ -6,14 +6,25 @@
 */
 class User_model extends CI_Model
 {
+
+	public function login_check($user_name){
+		$this->db->select('uid,passwd,type,u_name');
+		$result=$this->db->where('account',$user_name)->get('user')->result_array();
+
+		return $result[0];
+		
+	}
 	
-	/*查看用户信息*/
+	/*查看所有用户信息*/
 	public function select(){
 
 		$data = $this->db->get('user')->result_array();
 		return $data;
 	}
 
+	/*
+	*	添加用户
+	*/
 	public function add($data){
 
 		$status=$this->db->insert('user',$data);
