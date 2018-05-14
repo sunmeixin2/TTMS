@@ -7,13 +7,15 @@
 
 </head>
 <body>
-	<header>
-     <h1>
-        剧院管理系统
-      <b class="login">当前用户<span>张三</span></b>
-      <b style="cursor: pointer;">登录</b>
-     </h1>
-	</header>
+<header>
+      <b class="login"><span><?php echo  $_SESSION['u_name']; ?>
+          <p>
+            退出
+          </p>
+      </span></b>
+      <!-- <b style="cursor: pointer;">登录</b> -->
+      <h1>剧院管理系统</h1>
+  </header>
 	<section>
 	<nav>
 		<ul class="aside">
