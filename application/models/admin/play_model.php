@@ -19,6 +19,16 @@ class Play_model extends CI_Model
 				->get()->result_array();
 		return $data;
 	}
+	
+	/*
+		查询某一条剧目信息
+	*/
+		public function select_one($id){
+			$data=$this->db->select('p_name,p_type,time,actor,director,details,')
+				->from('play')->where('p_id',$id)
+				->get()->result_array();
+				var_dump($data);
+		}
 
 
 	/**

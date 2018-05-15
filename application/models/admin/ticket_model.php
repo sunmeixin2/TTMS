@@ -29,8 +29,6 @@
 		return $result;
  	}
 
-
-
  	/**
  	*	购票信息页面
  	*/
@@ -57,12 +55,11 @@
  	}
  	public function check_ticket($s_id){
 
-
- 			//对应已经售出的座位票信息
+ 		//对应已经售出的座位票信息
 		$this->db->select('nums,is_sale');
 		$data['tickets']=$this->db->get_where('ticket',array('is_sale'=>1,'s_id'=>$s_id))->result_array();
-		 var_dump($data);
-		 exit(0);
+		 // var_dump($data);
+		 // exit(0);
 		 return $data;
  	}
 
