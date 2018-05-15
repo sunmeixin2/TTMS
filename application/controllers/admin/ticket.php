@@ -26,8 +26,11 @@ class Ticket extends CI_Controller
 			$i++;
 
 		}
-		var_dump($info);exit();
+		//var_dump($info);exit();
+		$this->load->view('web/head.html');
 		$this->load->view('web/piaowu.html',$info);
+		$this->load->view('web/foot.html');
+		
 
 	}
 
@@ -50,8 +53,6 @@ class Ticket extends CI_Controller
 		 //echo json_encode($info['tickets']);
 		
 		$this->load->view('web/goupiao.html',$info);
-
-		
 	}
 
 	//ajax传输已经售出的座位信息

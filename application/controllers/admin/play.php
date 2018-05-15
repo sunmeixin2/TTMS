@@ -6,7 +6,7 @@
 */
 class Play extends CI_Controller
 {
-
+	
 	
 	/**
 	*	载入所有剧目信息
@@ -14,16 +14,25 @@ class Play extends CI_Controller
 	public function index(){
 		//$this->output->enable_profiler(true);
 	
-		//$this->load->view('web/index.html');
 		// //从model层获取所有的剧目信息
 		$this->load->model('admin/play_model','play');
 		$info['play_info']=$this->play->select();
-		//var_dump($info);exit;
 		//将所有的剧目信息传到view层
+		$this->load->view('web/head.html');
 		$this->load->view('web/jumu.html',$info);
+		$this->load->view('web/foot.html');
+		
 	}
+	/*
+		剧目详情页面
+	*/
 
-
+	public function one_play(){
+		$p_id=$this->uri->segment(4);
+		//$p_id=2;
+		$this->load->model('admin/play_model','play');
+		$this->play->select_one($p_id);
+	}
 
 	/**
 	*	添加剧目信息
@@ -31,7 +40,10 @@ class Play extends CI_Controller
 
 	public function play_add(){
 
+		$this->load->view('web/head.html');
 		$this->load->view('web/add_jumu.html');
+		$this->load->view('web/foot.html');
+		
 
 	}
 	public function play_add_action(){
@@ -107,7 +119,10 @@ class Play extends CI_Controller
 		$info['data']=$this->play->edit_select($p_id);
 
 		//var_dump($info);exit();
+		$this->load->view('web/head.html');
 		$this->load->view('web/xiugai_jumu.html',$info);
+		$this->load->view('web/foot.html');
+		
 
 	}
 

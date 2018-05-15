@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('style/style.css')  ?>">
-</head>
-<body>
-  <header>
-      <b class="login"><span><?php echo  $_SESSION['u_name']; ?>
-          <p>
-            退出
-          </p>
-      </span></b>
-      <!-- <b style="cursor: pointer;">登录</b> -->
-      <h1>剧院管理系统</h1>
-  </header>
-  <section>
-  <nav>
-    <ul class="aside">
-      <li><a href="<?php echo site_url('admin/home/index')?>">影厅管理</a></li>
-      <li class="active"><a href="<?php  echo site_url('admin/play/index')?>">剧目管理</a></li>
-      <li><a href="<?php echo site_url('admin/show_plan/index')?>">演出计划管理</a></li>
-      <li><a href="<?php echo site_url('admin/ticket/index')?>">票务管理</a></li>
-      <li><a href="<?php echo site_url('admin/user/index')?>">用户管理</a></li>
-    </ul>
+
     <article class="one" id="yingting">
      <h1>剧目管理</h1>
               <div class="table">
@@ -68,7 +43,7 @@
                       <td><p><?php echo $value['details']?></p></td> -->
                      
                       <td>
-                      <span><a href="">详情</a></span>
+                      <span><a href="<?php echo site_url('admin/play/one_play/').$value['p_id']?>">详情</a></span>
                       <span><a href="<?php echo site_url('admin/play/play_delete/').$value['p_id']?>">删除</a></span>
                       <span><a href="<?php echo site_url('admin/play/play_edit/').$value['p_id']?>">修改</a>
                       </span>
@@ -90,8 +65,4 @@
             </script>
             </div>
     </article>
-  </nav>
-  </section>
-</div>
-</body>
-</html>
+ 

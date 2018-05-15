@@ -35,7 +35,10 @@ class Login extends CI_Controller
 				$_SESSION['type']=$data['type'];
 				$_SESSION['u_name']=$data['u_name'];
 				
-				$this->load->view('web/index.html');				
+				$this->load->view('web/head.html');
+				$this->load->view('web/index.html');
+				$this->load->view('web/foot.html');
+								
 			}else{
 				echo "密码错误";
 			}
