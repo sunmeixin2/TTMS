@@ -10,7 +10,8 @@ class User_model extends CI_Model
 	public function login_check($user_name){
 		$this->db->select('uid,passwd,type,u_name');
 		$result=$this->db->where('account',$user_name)->get('user')->result_array();
-
+		// var_dump($result);
+	
 		return $result[0];
 		
 	}

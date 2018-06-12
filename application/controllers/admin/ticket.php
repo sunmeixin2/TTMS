@@ -27,7 +27,7 @@ class Ticket extends CI_Controller
 
 		}
 		//var_dump($info);exit();
-		$this->load->view('web/head.html');
+		// $this->load->view('web/head.html');
 		$this->load->view('web/piaowu.html',$info);
 		$this->load->view('web/foot.html');
 		

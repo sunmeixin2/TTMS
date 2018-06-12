@@ -12,7 +12,7 @@ class Home extends CI_Controller
 		$this->load->model('admin/show_hall_model','show_hall');
 		$data['show_hall'] = $this->show_hall->check();
 
-		$this->load->view('web/head.html');
+		//$this->load->view('web/head.html');
 		$this->load->view('web/yingting.html',$data);
 		$this->load->view('web/foot.html');
 	}
@@ -20,7 +20,7 @@ class Home extends CI_Controller
 	// 添加影厅
 	public function add_YT(){
 	
-		$this->load->view('web/head.html');
+		//$this->load->view('web/head.html');
 		$this->load->view('web/add_YT.html');
 		$this->load->view('web/foot.html');
 		
@@ -56,7 +56,7 @@ class Home extends CI_Controller
 		$this->load->model('admin/show_hall_model','show_hall');
 		$data['show_hall'] = $this->show_hall->check_YT($h_id);
 		
-		$this->load->view('web/head.html');
+		//$this->load->view('web/head.html');
 		$this->load->view('web/xiugai_YT.html',$data);
 		$this->load->view('web/foot.html');
 	}

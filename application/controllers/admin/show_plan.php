@@ -27,7 +27,7 @@ class Show_plan extends CI_Controller
 		}
 		//var_dump($info['show_plan']);exit();
 		//将信息传递给view层
-		$this->load->view('web/head.html');
+	
 		$this->load->view('web/jihua.html',$info);
 		$this->load->view('web/foot.html');
 		
@@ -43,7 +43,7 @@ class Show_plan extends CI_Controller
 
 		$this->load->model('admin/show_plan_model','show_plan');
 		$info=$this->show_plan->add_check();
-		$this->load->view('web/head.html');
+		// $this->load->view('web/head.html');
 		$this->load->view('web/add_jihua.html',$info);
 		$this->load->view('web/foot.html');
 		
@@ -88,7 +88,7 @@ class Show_plan extends CI_Controller
 		$info['data'][0]['up_time']=date('Y-m-d H:i',$info['data'][0]['up_time']);
 		$info['data'][0]['down_time']=date('Y-m-d H:i',$info['data'][0]['down_time']);
 
-		$this->load->view('web/head.html');
+		
 		$this->load->view('web/xiugai_jihua.html',$info);
 		$this->load->view('web/foot.html');
 		

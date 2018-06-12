@@ -14,7 +14,7 @@ class User extends CI_Controller
 		$this->load->model('admin/user_model','user');
 		$data['user']=$this->user->select();
 
-		$this->load->view('web/head.html');
+		// $this->load->view('web/head.html');
 		$this->load->view('web/yonghu.html',$data);
 		$this->load->view('web/foot.html');
 		
@@ -24,7 +24,7 @@ class User extends CI_Controller
 
 	public function user_add(){
 		
-		$this->load->view('web/head.html');
+		// $this->load->view('web/head.html');
 		$this->load->view('web/add_yonghu.html');
 		$this->load->view('web/foot.html');
 		
@@ -56,7 +56,7 @@ class User extends CI_Controller
 		$this->load->model('admin/user_model','user');
 		$data['user'] = $this->user->edit_select($uid);
 		//p($data);die();
-		$this->load->view('web/head.html');
+		// $this->load->view('web/head.html');
 		$this->load->view('web/xiugai_yonghu.html',$data);
 		$this->load->view('web/foot.html');
 		
